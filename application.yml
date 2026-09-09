@@ -45,8 +45,8 @@ plugins:
       yandex: false
       flowerytts: false
     spotify:
-      clientId: "YOUR_SPOTIFY_CLIENT_ID"     # <-- এখানে আপনার স্পটিফাই Client ID বসান
-      clientSecret: "YOUR_SPOTIFY_CLIENT_SECRET" # <-- এখানে আপনার স্পটিফাই Client Secret বসান
+      clientId: "1c780cf1039340b0a7dc7d536f1b28ba"     # <-- এখানে আপনার স্পটিফাই Client ID বসান
+      clientSecret: "32b5ad2fb30a46d9bab28ebe21c6d937" # <-- এখানে আপনার স্পটিফাই Client Secret বসান
       countryCode: "US"
       playlistLoadLimit: 6
       albumLoadLimit: 6
