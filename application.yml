@@ -1,0 +1,83 @@
+server: # Server port and ip
+  port: 2333
+  address: 0.0.0.0
+
+lavalink:
+  plugins:
+    # YouTube Support Plugin (For YT Links & Search)
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.11.5"
+    # Spotify Support Plugin
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.3.0"
+  server:
+    password: "youshallnotpass" # আপনার নিজের একটি স্ট্রং পাসওয়ার্ড দিন
+    sources:
+      youtube: false # প্লাগইন ব্যবহারের কারণে এটি false থাকবে
+      bandcamp: true
+      soundcloud: true
+      twitch: true
+      vimeo: true
+      http: true
+      local: false
+    filters:
+      volume: true
+      equalizer: true
+      channelMix: true
+      distortion: true
+      lowPass: true
+      rotation: true
+      timescale: true
+      tremolo: true
+      vibrato: true
+    bufferDurationMs: 400
+    frameBufferDurationMs: 5000
+    opusEncodingQuality: 10
+    resamplingQuality: HIGH
+    trackStuckThresholdMs: 10000
+    useSeekGhosting: true
+    youtubePlaylistLoadLimit: 6
+    playerUpdateInterval: 5
+    youtubeSearchEnabled: true
+    soundcloudSearchEnabled: true
+    gc-warnings: true
+
+# Plugins Configuration
+plugins:
+  lavasrc:
+    providers:
+      - "ytsearch:\"%ISRC%\""
+      - "ytsearch:%QUERY%"
+    sources:
+      spotify: true # Spotify active করা হলো
+      applemusic: false
+      deezer: false
+      yandexmusic: false
+      flowerytts: false
+      vkmusic: false
+    spotify:
+      clientId: "YOUR_SPOTIFY_CLIENT_ID" # এখানে আপনার Spotify Client ID বসান
+      clientSecret: "YOUR_SPOTIFY_CLIENT_SECRET" # এখানে আপনার Spotify Client Secret বসান
+      countryCode: "US"
+      playlistLoadLimit: 6
+      albumLoadLimit: 6
+
+  youtube:
+    enabled: true
+    allowSearch: true # YouTube Search active করা হলো
+    allowDirectVideoIds: true # YouTube Direct Link active করা হলো
+    allowDirectPlaylistIds: true
+    clients:
+      - MUSIC
+      - WEB
+      - ANDROID
+
+metrics:
+  prometheus:
+    enabled: false
+    endpoint: /metrics
+
+logging:
+  file:
+    path: ./logs/Lavalink.log
+  level:
+    root: INFO
+    lavalink: INFO
