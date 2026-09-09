@@ -7,8 +7,8 @@ WORKDIR /opt/lavalink
 # ৩. আপনার গিটহাবের application.yml ফাইলটি কপি করা
 COPY application.yml /opt/lavalink/application.yml
 
-# ৪. বিল্ড টাইমে প্লাগইনগুলো ডাউনলোড করে নেওয়ার জন্য এই বিশেষ কমান্ড (টাইমআউট এড়াতে)
-RUN java -jar Lavalink.jar --version
+# ৪. বিল্ড টাইমে ছোট হাতের অক্ষরে lavalink.jar রান করে প্লাগইন ডাউনলোড করা
+RUN java -jar lavalink.jar --version
 
 # ৫. Render এর পোর্ট এক্সপোজ করা
 EXPOSE 8080
