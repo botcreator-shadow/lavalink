@@ -1,14 +1,13 @@
-# Lavalink v4 এর লেটেস্ট এবং স্ট্যাবল ইমেজ ব্যবহার করা হয়েছে
 FROM ghcr.io/lavalink-devs/lavalink:4.0.8
 
-# লিনাক্স সিস্টেমের কিছু ইন্টারনাল সেটিংস ঠিক করার জন্য (ঐচ্ছিক কিন্তু নিরাপদ)
 USER root
 
-# আপনার তৈরিকৃত application.yml ফাইলটি লাভালিংকের ডিরেক্টরিতে কপি করা হচ্ছে
+# UDP ট্রাফিক ফরওয়ার্ডিং এবং নেটওয়ার্কিংয়ের জন্য প্রক্সি টুলস ইনস্টল
+RUN apt-get update && apt-get install -y socat iptables dante-server && rm -rf /var/lib/apt/lists/*
+
 COPY application.yml /opt/Lavalink/application.yml
 
-# লাভালিংক ইউজার হিসেবে রান করার জন্য
-USER lavalink
+# লাভালিংককে রুট প্রিভিলেজ দিয়ে চালানো (UDP রিডাইরেকশনের জন্য জরুরি)
+CMD ["java", "-jar", "Lavalink.jar"]
 
-# Render-এর জন্য পোর্ট এক্সপোজ করা হলো
 EXPOSE 2333
