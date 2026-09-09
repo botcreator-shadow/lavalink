@@ -9,9 +9,12 @@ lavalink:
     # Spotify Support Plugin
     - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.3.0"
   server:
-    password: "youshallnotpass" # আপনার নিজের একটি স্ট্রং পাসওয়ার্ড দিন
+    password: "youshallnotpass" 
+    # Render-এর UDP ব্লক বাইপাস করার জন্য HTTP টানেলিং অন করা হলো
+    httpTunneling:
+      enabled: true
     sources:
-      youtube: false # প্লাগইন ব্যবহারের কারণে এটি false থাকবে
+      youtube: false 
       bandcamp: true
       soundcloud: true
       twitch: true
@@ -47,23 +50,23 @@ plugins:
       - "ytsearch:\"%ISRC%\""
       - "ytsearch:%QUERY%"
     sources:
-      spotify: true # Spotify active করা হলো
+      spotify: true 
       applemusic: false
       deezer: false
       yandexmusic: false
       flowerytts: false
       vkmusic: false
     spotify:
-      clientId: "YOUR_SPOTIFY_CLIENT_ID" # এখানে আপনার Spotify Client ID বসান
-      clientSecret: "YOUR_SPOTIFY_CLIENT_SECRET" # এখানে আপনার Spotify Client Secret বসান
+      clientId: "YOUR_SPOTIFY_CLIENT_ID" 
+      clientSecret: "YOUR_SPOTIFY_CLIENT_SECRET" 
       countryCode: "US"
       playlistLoadLimit: 6
       albumLoadLimit: 6
 
   youtube:
     enabled: true
-    allowSearch: true # YouTube Search active করা হলো
-    allowDirectVideoIds: true # YouTube Direct Link active করা হলো
+    allowSearch: true 
+    allowDirectVideoIds: true 
     allowDirectPlaylistIds: true
     clients:
       - MUSIC
