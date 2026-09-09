@@ -68,10 +68,11 @@ plugins:
     allowSearch: true 
     allowDirectVideoIds: true 
     allowDirectPlaylistIds: true
+    # ক্লায়েন্ট লিস্ট পরিবর্তন করে এই দুটি দিন
     clients:
-      - MUSIC
-      - WEB
-      - ANDROID
+      - ANDROID_VR
+      - TVHTML5
+
 
 metrics:
   prometheus:
