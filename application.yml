@@ -1,0 +1,77 @@
+server:
+  port: ${PORT:8080} # Render এর ডাইনামিক পোর্ট হ্যান্ডেল করার জন্য এটি জরুরি
+  address: 0.0.0.0
+
+lavalink:
+  plugins:
+    # YouTube এবং YouTube Search এর জন্য প্লাগইন
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.11.5" # লেটেস্ট স্টেবল ভার্সন
+    # Spotify এবং অন্যান্য এক্সটার্নাল সোর্সের জন্য LavaSrc প্লাগইন
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.3.0"
+      repository: "https://maven.topi.wtf/releases"
+
+  server:
+    password: "youshallnotpass" # আপনার বটের জন্য এই পাসওয়ার্ডটি ব্যবহার করবেন
+    bufferDurationMs: 400
+    frameBufferDurationMs: 5000
+    opusEncodingQuality: 10
+    resamplingQuality: HIGH
+    trackStuckThresholdMs: 10000
+    useSeekGhosting: true
+    youtubePlaylistLoadLimit: 6
+    playerUpdateInterval: 5
+
+plugins:
+  # YouTube প্লাগইন কনফিগারেশন
+  youtube:
+    enabled: true
+    allowSearch: true # youtube search সচল রাখার জন্য
+    allowDirectVideoIds: true # সরাসরি ভিডিও লিঙ্কের জন্য
+    allowDirectPlaylistIds: true # প্লেলিস্ট লিঙ্কের জন্য
+    clients:
+      - MUSIC
+      - WEB
+      - ANDROID_TESTSUITE
+
+  # LavaSrc (Spotify) প্লাগইন কনফিগারেশন
+  lavasrc:
+    providers:
+      - "ytsearch:\"%ISRC%\"" # স্পটিফাই ট্র্যাক ইউটিউবে খোঁজার জন্য
+      - "ytsearch:%QUERY%"
+    sources:
+      spotify: true # স্পটিফাই সোর্স ট্রু করা হলো
+      apple: false
+      deezer: false
+      yandex: false
+      flowerytts: false
+    spotify:
+      clientId: "YOUR_SPOTIFY_CLIENT_ID"     # <-- এখানে আপনার স্পটিফাই Client ID বসান
+      clientSecret: "YOUR_SPOTIFY_CLIENT_SECRET" # <-- এখানে আপনার স্পটিফাই Client Secret বসান
+      countryCode: "US"
+      playlistLoadLimit: 6
+      albumLoadLimit: 6
+
+sources:
+  youtube: false # মূল বিল্ট-ইন সোর্স ফলস থাকবে (যেহেতু প্লাগইন ব্যবহার করছি)
+  bandcamp: true
+  soundcloud: true
+  twitch: true
+  vimeo: true
+  http: true
+  local: false
+
+metrics:
+  prometheus:
+    enabled: false
+    endpoint: /metrics
+
+sentry:
+  dsn: ""
+  environment: ""
+
+logging:
+  file:
+    path: ./logs/lavalink.log
+  level:
+    root: INFO
+    lavalink: INFO
