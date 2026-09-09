@@ -4,13 +4,12 @@ server: # Server port and ip
 
 lavalink:
   plugins:
-    # YouTube Support Plugin (For YT Links & Search)
-    - dependency: "dev.lavalink.youtube:youtube-plugin:1.11.5"
+    # 📌 এখানে লেটেস্ট এবং আপডেট করা প্লাগইন ভার্সন ব্যবহার করা হয়েছে
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.15.0"
     # Spotify Support Plugin
     - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.3.0"
   server:
     password: "youshallnotpass" 
-    # Render-এর UDP ব্লক বাইপাস করার জন্য HTTP টানেলিং অন করা হলো
     httpTunneling:
       enabled: true
     sources:
@@ -68,20 +67,7 @@ plugins:
     allowSearch: true 
     allowDirectVideoIds: true 
     allowDirectPlaylistIds: true
-    # ক্লায়েন্ট লিস্ট পরিবর্তন করে এই দুটি দিন
+    # 📌 ক্লায়েন্ট পরিবর্তন করা হলো যা ইউটিউবের ব্লকিং বাইপাস করবে
     clients:
       - ANDROID_VR
       - TVHTML5
-
-
-metrics:
-  prometheus:
-    enabled: false
-    endpoint: /metrics
-
-logging:
-  file:
-    path: ./logs/Lavalink.log
-  level:
-    root: INFO
-    lavalink: INFO
