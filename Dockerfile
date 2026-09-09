@@ -4,8 +4,8 @@ FROM eclipse-temurin:17-jre-alpine
 # ২. কন্টেইনারের ভেতরে ওয়ার্কিং ডিরেক্টরি তৈরি
 WORKDIR /opt/lavalink
 
-# ৩. ল্যাভালিংকের অফিশিয়াল .jar ফাইল ডিরেক্ট ডাউনলোড করার কমান্ড (ছোট হাতের lavalink.jar নামে সেভ হবে)
-RUN wget https://github.com -O lavalink.jar
+# ৩. আপনার গিটহাব থেকে সরাসরি lavalink.jar ফাইলটি কন্টেইনারে কপি করা
+COPY Lavalink.jar Lavalink.jar
 
 # ৪. আপনার গিটহাবের application.yml ফাইলটি কপি করা
 COPY application.yml application.yml
